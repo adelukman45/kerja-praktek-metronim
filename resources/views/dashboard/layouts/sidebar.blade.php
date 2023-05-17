@@ -11,16 +11,16 @@
                 <a class="nav-link {{ Request::is('dashboard/products*') ? 'active' : ' ' }}"
                     href="/dashboard/products">
                     <span data-feather="file-text"></span>
-                    Produk
+                    Products
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : ' ' }}"
-                    href="/dashboard/categories">
-                    <span data-feather="list"></span>
-                    Kategori
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/customers*') ? 'active' : ' ' }}"
+                    href="/dashboard/customers">
+                    <span data-feather="user"></span>
+                    Customers
                 </a>
-            </li> --}}
+            </li>
             <hr>
             <li class="nav-item">
                 <form action="/logout" method="post">

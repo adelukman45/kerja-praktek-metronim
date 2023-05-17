@@ -1,28 +1,25 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="p-3 mb-2 text-center" style="background-color: black; color: yellow;">
+    <div class="p-3 mb-2 text-center">
         <div class="row">
             <div class="">
-                <img src="/img/logo.jpg" class="rounded mx-auto d-block pb-3 w-25" alt="...">
+                <img src="/img/ms.jpg" class="rounded mx-auto d-block pb-3 w-25" alt="...">
             </div>
             <figure>
                 <blockquote class="blockquote">
-                    <p>Al-Hadad Store menyediakan produk herbal, media dzikir dan yang lain nya. Silahkan cek produk
-                        kami disini dan Order Via Whatsapp</p>
+                    <p>Giving UI Better with UX</p>
                 </blockquote>
                 {{-- <div class="d-grid gap-2 d-md-block mb-2">
                     <button class="btn btn" style="background-color: yellow;" type="button">Chat via
                         Whatshapp</button>
                 </div> --}}
-                <p class="text-muted">
-                    <cite title="8Am - 17-00pm">atau</cite>
-                </p>
+
                 <div class="d-md-block mb-5">
-                    <button class="btn btn" style="background-color: yellow;" type="button">Order Via Shopee</button>
+                    <a href="/order" class="btn btn-primary" type="button">Order</a>
                 </div>
                 <figcaption class="blockquote-footer">Have a nice day!!<br>
-                    Operational <cite title="8Am - 17-00pm">8Am - 17-00pm</cite>
+                    Operational <cite title="8Am - 18-00pm">8Am - 18-00pm</cite>
                 </figcaption>
             </figure>
 
@@ -30,41 +27,27 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="container mt-5">
-        <h1 class="mb-3 text-center">{{ $title }}</h1>
-        <div class="container">
-            <div class="row">
-                <hr>
-                @foreach ($products as $product)
-                    <div class="col-sm-4" id="myScrollspy">
-                        <div class="list-group">
-                            <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
-                                alt="{{ $product->category->name }}">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div id="section1">
-                            <h2 class="mt-3">{{ $product->name }}</h2>
-                            <p>{!! $product->detail !!}</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="d-grid gap-2d- md-block">
-                            <a href="" class="btn btn-success">Order Produk</a>
-                        </div>
-                    </div>
-                    <hr class="my-3">
-                @endforeach
+        <div class="row">
+            <div class="col-6">
+                <h1 class="display-5 pt-5 mb-3">The best solution UI UX Desain Services and Digital development to help you
+                </h1>
+                <p class="fs-4 fw-light">create easy-to-use digital products faster</p>
+                <a href="/portfolios/" class="btn btn-primary shadow-lg pt-2 mb-5 mt-5 rounded my-3 px-2"><i
+                        class="bi bi-eye mx-2"></i>View portfolios<i class="bi bi-arrow-right mx-2"></i></a>
             </div>
+            <div class="col">
+                <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="">
+
+            </div>
+            <hr class="my-3">
         </div>
-        <div class="d-flex justify-content-end">
-            <a href="/products/" class="btn btn-light shadow-lg p-2 mb-5 bg-body rounded my-3 px-2"><i
-                    class="bi bi-eye mx-2"></i>Lihat produk lainnya<i class="bi bi-arrow-right mx-2"></i></a>
-        </div>
+    </div>
     </div>
 
     <!-- Footer -->
-    <footer class="text-center text-lg-start bg-dark text-muted">
+    <footer class="text-center text-lg-start bg-primary text-muted">
         <!-- Section: Links  -->
         <section class="py-1">
             <div class="container text-center text-md-start mt-3">
@@ -73,30 +56,28 @@
                     <!-- Grid column -->
                     <div class="col-md-6 col-lg-6 col-xl-6 mx-auto mb-4">
                         <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4" style="color: yellow; fas fa-gem ">
-                            </i>Lokasi
-                            Kami
+                        <h6 class="text-uppercase fw-bold mb-4 text-light">
+                            </i>Our Location
                         </h6>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3960.6312353081626!2d107.723948!3d-6.934602!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c3258c3745ab%3A0x32896fc8d94f19fe!2sJl.%20Situ%20Seeng%20No.3%2C%20Cibiru%20Wetan%2C%20Kec.%20Cileunyi%2C%20Kabupaten%20Bandung%2C%20Jawa%20Barat%2040626!5e0!3m2!1sid!2sid!4v1646569982536!5m2!1sid!2sid"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.2584198819586!2d107.60266348596433!3d-6.897309023964016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e644d27034e3%3A0xe84a0ea564dd9dde!2sJl.%20Kb.%20Bibit%20Tengah%20No.24%2C%20Tamansari%2C%20Kec.%20Bandung%20Wetan%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040116!5e0!3m2!1sid!2sid!4v1684276261699!5m2!1sid!2sid"
                             style="border:0; width: 100%; height: 85%;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-6 col-lg-6 col-xl-6 mx-auto mb-md-0 mb-4">
+                    <div class="col-md-6 col-lg-6 col-xl-6 mx-auto mb-md-0 mb-4 text-light">
                         <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4" style="color: yellow;">
-                            Tentang Kami
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            About Us
                         </h6>
-                        <p><i class="   bi bi-house"></i> Jl. Situ Seeng No.3, Cibiru Wetan, Kec. Cileunyi,
-                            Kabupaten
-                            Bandung, Jawa Barat</p>
+                        <p><i class="   bi bi-house"></i> Jl. Kb. Bibit Tengah No.24, Tamansari, Kec. Bandung Wetan, Kota
+                            Bandung, Jawa Barat 40116</p>
                         <p>
                             <i class="bi bi-envelope"></i>
                             info@example.com
                         </p>
-                        <p><i class="bi bi-telephone"></i> 62 878-3107-7691</p>
+                        <p><i class="bi bi-telephone"></i> +62 878-2377-0995</p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -106,31 +87,11 @@
         <!-- Section: Links  -->
 
         <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: black;">
-            &copy; 2022 - {{ date('Y') }}
+        <div class="text-center p-4" style="background-color: rgb(0, 78, 167); color:white;">
+            &copy; 2023 - {{ date('Y') }}
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- Footer -->
-    {{-- <footer class="bg-dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 my-3">
-                    <h5 class="">About</h5>
-                    <div class="embed-responsive embed-responsive-3by4">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.1578077767573!2d107.72340112921526!3d-6.93460249968685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c3258c3745ab%3A0x32896fc8d94f19fe!2sJl.%20Situ%20Seeng%20No.3%2C%20Cibiru%20Wetan%2C%20Kec.%20Cileunyi%2C%20Kabupaten%20Bandung%2C%20Jawa%20Barat%2040626!5e0!3m2!1sid!2sid!4v1646099102733!5m2!1sid!2sid"
-                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-                <div class="col my-3">
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            <p class="text-muted">&copy; 2020 - {{ date('Y') }}</p>
-        </div>
-    </footer> --}}
 
 
     <style>
@@ -140,7 +101,7 @@
             font-family: Roboto, Arial, Sans-serif;
             font-size: 14px;
             font-weight: 400;
-            right: 5%;
+            right: 2%;
             position: fixed;
             bottom: 0;
             z-index: 999;
@@ -163,7 +124,7 @@
             display: block;
             height: 42px;
             margin-bottom: 20px;
-            width: 220px
+            width: 150px
         }
 
         .icons:hover {
@@ -188,7 +149,6 @@
             transition: ease-in-out .175s;
             width: 42px
         }
-
     </style>
     <div class="whatsapp">
 
@@ -196,6 +156,6 @@
                 viewBox="0 0 800 800">
                 <path
                     d="M519 454c4 2 7 10-1 31-6 16-33 29-49 29-96 0-189-113-189-167 0-26 9-39 18-48 8-9 14-10 18-10h12c4 0 9 0 13 10l19 44c5 11-9 25-15 31-3 3-6 7-2 13 25 39 41 51 81 71 6 3 10 1 13-2l19-24c5-6 9-4 13-2zM401 200c-110 0-199 90-199 199 0 68 35 113 35 113l-20 74 76-20s42 32 108 32c110 0 199-89 199-199 0-111-89-199-199-199zm0-40c133 0 239 108 239 239 0 132-108 239-239 239-67 0-114-29-114-29l-127 33 34-124s-32-49-32-119c0-131 108-239 239-239z" />
-            </svg><span>Order Via WhatsApp</span></a>
+            </svg><span>Ask Admin!</span></a>
         <div>
         @endsection

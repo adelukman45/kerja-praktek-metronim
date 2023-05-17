@@ -10,8 +10,8 @@
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" required
-                    autofocus value="{{ old('name') }}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                    required autofocus value="{{ old('name') }}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -19,9 +19,9 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="slug" class="form-label">Slug</label>
-                <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" id="slug" required
-                    value="{{ old('slug') }}" disabled>
+                {{-- <label for="slug" class="form-label">Slug</label> --}}
+                <input type="hidden" class="form-control @error('slug') is-invalid @enderror" name="slug" id="slug"
+                    required value="{{ old('slug') }}" disabled>
                 @error('slug')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -29,22 +29,10 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <select class="form-select" name="category_id">
-                    @foreach ($categories as $category)
-                        @if (old('category_id') == $category->id)
-                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                        @else
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Post Image</label>
+                <label for="image" class="form-label">Image</label>
                 <img class="img-preview img-fluid mb-3 col-sm-5">
-                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"
-                    onchange="previewImage()">
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
+                    name="image" onchange="previewImage()">
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -52,10 +40,20 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="detail" class="form-label">Detail</label>
-                <input id="detail" type="hidden" name="detail" value="{{ old('detail') }}">
-                <trix-editor input="detail"></trix-editor>
-                @error('detail')
+                <label for="type" class="form-label">Type</label>
+                <input type="text" class="form-control @error('type') is-invalid @enderror" name="type" id="type"
+                    required autofocus value="{{ old('type') }}">
+                @error('type')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input id="description" type="hidden" name="description" value="{{ old('description') }}">
+                <trix-editor input="description"></trix-editor>
+                @error('description')
                     <p class="text-danger"> {{ $message }} </p>
                 @enderror
             </div>

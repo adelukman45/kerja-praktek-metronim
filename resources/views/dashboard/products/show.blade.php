@@ -17,13 +17,13 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-5">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->category->name }}"
-                        class="img-fluid mt-3">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="" class="img-fluid mt-3">
                 </div>
                 <div class="col-5">
                     <h3>{{ $product->name }}</h3>
+                    <span class="text-secondary">{{ $product->type }}</span>
                     <hr>
-                    <p>{!! $product->detail !!}</p>
+                    <p>{!! $product->description !!}</p>
                 </div>
                 <div class="col my-3">
                     <a href="/dashboard/products/{{ $product->slug }}/edit" class="btn btn-warning mb-2"> <span

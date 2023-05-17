@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\DashboardCategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardCustomerController;
 use App\Http\Controllers\DashboardProductController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductsController;
@@ -29,7 +29,7 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/products', [ProductsController::class, 'products']);
+Route::get('/portfolios', [ProductsController::class, 'products']);
 Route::get('/products/detail/{product:slug}', [ProductsController::class, 'show']);
 Route::get('/products/{category:name}', [ProductsController::class, 'category']);
 
@@ -41,11 +41,14 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::get('dashboard', [LoginController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/dashboard/categories/checkSlug', [DashboardCategoryController::class, 'checkSlug'])->middleware('auth');
-Route::resource('/dashboard/categories', DashboardCategoryController::class)->middleware('auth');
 Route::get('/dashboard/products/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('auth');
+Route::get('dashboard/products/search', [PhotoController::class, 'search'])->middleware('auth');
 Route::resource('/dashboard/products', DashboardProductController::class)->middleware('auth');
+Route::post('dashboard/edit/{id}', [LoginController::class, 'edit'])->middleware('auth');
+Route::post('dashboard/editpassword/{id}', [LoginController::class, 'editpassword'])->middleware('auth');
+Route::resource('/dashboard/customers', DashboardCustomerController::class)->middleware('auth');
+Route::get('order/success-order', [CustomerController::class, 'create']);
+Route::resource('/order', CustomerController::class);

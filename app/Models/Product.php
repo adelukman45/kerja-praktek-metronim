@@ -13,7 +13,6 @@ class Product extends Model
 
     // protected $fillable = ['title', 'category_id', 'slug', 'excerpt', 'body'];
     protected $guarded = ['id'];
-    protected $with = ['category', 'author'];
 
     public function scopeFilter($query, array $filters)
     {
@@ -44,10 +43,7 @@ class Product extends Model
     }
 
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+
 
     public function author()
     {

@@ -24,7 +24,7 @@
     </style>
 
 
-    <title>Metronim Studio | {{ $title }}</title>
+    <title>Metronim Studio</title>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#list-example">

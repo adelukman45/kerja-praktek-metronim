@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,11 +15,18 @@ class DashboardProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $pagination  = 10;
+        $product    = Product::when($request->keyword, function ($query) use ($request) {
+            $query
+                ->where('name', 'like', "%{$request->keyword}%");
+        })->orderBy('created_at', 'desc')->paginate($pagination);
+
+        $product->appends($request->only('keyword'));
         return view('dashboard.products.index', [
-            'products' => Product::all()
-        ]);
+            'products' => $product
+        ])->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
 
     /**
@@ -30,9 +36,7 @@ class DashboardProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.products.create', [
-            'categories' => Category::all(),
-        ]);
+        return view('dashboard.products.create');
     }
 
     /**
@@ -46,16 +50,14 @@ class DashboardProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'unique:products',
-            'category_id' => 'required',
             'image' => 'required|image|file|max:1024',
-            'detail' => 'required'
+            'type' => 'required',
+            'description' => 'required'
         ]);
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
-
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->detail), 200);
 
         Product::create($validatedData);
 
@@ -85,7 +87,6 @@ class DashboardProductController extends Controller
     {
         return view('dashboard.products.edit', [
             'product' => $product,
-            'categories' => Category::all()
         ]);
     }
 
@@ -100,8 +101,8 @@ class DashboardProductController extends Controller
     {
         $rules = [
             'name' => 'required|max:255',
-            'category_id' => 'required',
             'image' => 'image|file|max:1024',
+            'type' => 'required',
             'detail' => 'required'
         ];
 
@@ -118,7 +119,6 @@ class DashboardProductController extends Controller
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Product::where('id', $product->id)
             ->update($validatedData);

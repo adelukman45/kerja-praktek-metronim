@@ -19,14 +19,14 @@
             @endif
 
             <main class="form-signin mx-3">
-                <h1 class="h3 my-3 pt-5 fw-normal text-center">Silahkan Login</h1>
+                <h1 class="h3 my-3 pt-5 fw-normal text-center">Please Login</h1>
                 <form action="/login" method="post">
                     @csrf
                     {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
 
                     <div class="form-floating">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email"
-                            placeholder="name@example.com" autofocus required value="{{ old('email') }}">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                            id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
                         <label for="email">Email address</label>
                         @error('email')
                             <div class="invalid-feedback">
@@ -45,7 +45,7 @@
                         @enderror
                     </div>
 
-                    <button class="w-100 btn btn-lg btn" style="background-color: yellow" type="submit">Login</button>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
                 </form>
                 {{-- <small class="d-block text-center mt-3">Not registered? <a href="/register">Register Now!</a></small> --}}
             </main>
